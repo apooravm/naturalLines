@@ -20,8 +20,8 @@ let oftenness_of_spliting_Slider;
 
 function setup() {
   createCanvas(windowWidth-20, windowHeight);
-  X1slider = createSlider(0, width, 0.70*width);
-  Y1slider = createSlider(0, height, 0.50*height);
+  // X1slider = createSlider(0, width, 0.70*width);
+  // Y1slider = createSlider(0, height, 0.50*height);
   divisionSlider = createSlider(0, 100, 20);
   oftenness_of_spliting_Slider = createSlider(0, 100, 90);
   displaceSlider = createSlider(0, 1000, 190);
@@ -36,14 +36,19 @@ function draw() {
   background(41);
   strokeWeight(4);
   stroke(255);
-  let x2 = X1slider.value();
-  let y2 = Y1slider.value();
-  if (mouseIsPressed && mouseY - prevMouseY < 40) {
+  // let x2 = X1slider.value();
+  // let y2 = Y1slider.value();
+  if (mouseIsPressed && mouseX - prevMouseX < 40 && mouseY - prevMouseY < 40) {
     prevMouseX = mouseX;
     prevMouseY = mouseY;
   }
-  let x1 = prevMouseX;
-  let y1 = prevMouseY;
+  if (mouseIsPressed && mouseX - x2 < 40 && mouseX - x2 > -40)
+  {
+    x2 = mouseX;
+    y2 = mouseY;
+  }
+  x1 = prevMouseX;
+  y1 = prevMouseY;
   naturalLine(x1, y1, x2, y2, false);
 
   // naturalLine(random(height), random(width), random(width), random(height), false);
